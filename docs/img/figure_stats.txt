@@ -1,0 +1,150 @@
+{
+  "lib_path": "/home/oetelaar/omnibot/build-native/librbt_mpc.so",
+  "models": [
+    "ackermann",
+    "skid_steer",
+    "diff_drive",
+    "omni3"
+  ],
+  "offtracking_measured_cm": 25.4,
+  "offtracking_delta35_m": 0.177,
+  "offtracking_deltamax_cm": 25.5,
+  "wheelbase_m": 1.0,
+  "delta_max_deg": 28.6,
+  "delta_rate_max_deg_s": 85.9,
+  "tau_v_s": 0.8,
+  "tau_delta_s": 0.05,
+  "cross_track_max_grid": 0.772,
+  "cross_track_max_mppi": 0.082,
+  "corner_min_speed_grid": 1.99,
+  "straight_speed_grid": 2.18,
+  "corner_min_speed_mppi": 2.89,
+  "straight_speed_mppi": 2.89,
+  "sweep_v_target": [
+    1.0,
+    2.0,
+    3.0,
+    4.0,
+    5.0,
+    6.0,
+    8.0
+  ],
+  "sweep": {
+    "grid": {
+      "corner": [
+        0.96,
+        1.48,
+        1.99,
+        2.23,
+        1.99,
+        2.0,
+        2.07
+      ],
+      "straight": [
+        1.0,
+        1.95,
+        2.18,
+        2.86,
+        2.75,
+        2.28,
+        2.56
+      ]
+    },
+    "mppi": {
+      "corner": [
+        1.0,
+        1.98,
+        2.89,
+        3.66,
+        4.0,
+        4.13,
+        3.72
+      ],
+      "straight": [
+        1.0,
+        1.98,
+        2.89,
+        3.64,
+        4.14,
+        4.2,
+        4.2
+      ]
+    }
+  },
+  "dt_s": 0.05,
+  "horizon_steps": 50,
+  "horizon_s": 2.5,
+  "solve_us_mppi": 12646.3,
+  "solve_us_grid": 1962.4,
+  "solve_us_mppi_p95": 20086.8,
+  "solve_us_grid_p95": 2880.4,
+  "fillet_radius_m": 2.38,
+  "min_turn_radius_m": 1.83,
+  "n_candidates_grid": 54,
+  "cand_terms_best": {
+    "cross_track": 1.022,
+    "heading": 0.277,
+    "speed": 0.204,
+    "progress": 0.465,
+    "clearance": 0.0,
+    "cmd_rate": 0.0,
+    "goal": 0.0
+  },
+  "mppi_rollouts": 256,
+  "mppi_lambda": 0.05,
+  "mppi_ess": 8.3,
+  "mppi_top10_weight_pct": 85.9,
+  "docking": {
+    "ackermann": {
+      "grid": {
+        "d": 0.0812,
+        "herr": 0.0,
+        "v": 0.0
+      },
+      "mppi": {
+        "d": 0.0164,
+        "herr": 0.0062,
+        "v": 0.019
+      }
+    },
+    "skid_steer": {
+      "grid": {
+        "d": 0.1126,
+        "herr": 0.0,
+        "v": 0.0
+      },
+      "mppi": {
+        "d": 0.0464,
+        "herr": 0.0213,
+        "v": 0.0026
+      }
+    },
+    "diff_drive": {
+      "grid": {
+        "d": 0.1159,
+        "herr": 0.0,
+        "v": 0.0
+      },
+      "mppi": {
+        "d": 0.0093,
+        "herr": 0.0192,
+        "v": 0.013
+      }
+    },
+    "omni3": {
+      "grid": {
+        "d": 0.2828,
+        "herr": 0.0,
+        "v": 0.0
+      },
+      "mppi": {
+        "d": 0.0212,
+        "herr": 0.0247,
+        "v": 0.0043
+      }
+    }
+  },
+  "corridor_final_cm": 2.9,
+  "solve_us_mppi_walls": 17981.3,
+  "solve_us_mppi_walls_p95": 25921.1
+}

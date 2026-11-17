@@ -1,0 +1,98 @@
+% ---------------------------------------------------------------------------
+% header.tex — opmaak voor de PDF-versie van het paper
+%
+% Engine: pdflatex. Dat is bewust: op deze machine staat alleen
+% texlive-base/latex-*, geen texlive-luatex of -xetex. pdflatex kan geen
+% Unicode lezen, dus elk niet-ASCII teken uit de tekst krijgt hieronder een
+% expliciete definitie (zie \newunicodechar). De lijst is gemaakt door het
+% paper te scannen, niet uit het hoofd — staat er ooit een nieuw symbool in,
+% dan meldt pdflatex dat als "Unicode character not set up".
+%
+% Lettertypen: Palatino (mathpazo, via pandoc -V fontfamily) voor tekst en
+% wiskunde, TeX Gyre Heros voor koppen, Latin Modern Mono voor code.
+% ---------------------------------------------------------------------------
+
+\usepackage[scaled=0.92]{helvet}   % tgheros kent de optie 'scaled' niet
+\renewcommand{\ttdefault}{lmtt}
+\usepackage{amsmath}
+\usepackage{newunicodechar}
+
+% ── niet-ASCII tekens ──────────────────────────────────────────────────────
+\newunicodechar{δ}{\ensuremath{\delta}}
+\newunicodechar{τ}{\ensuremath{\tau}}
+\newunicodechar{θ}{\ensuremath{\theta}}
+\newunicodechar{κ}{\ensuremath{\kappa}}
+\newunicodechar{λ}{\ensuremath{\lambda}}
+\newunicodechar{Δ}{\ensuremath{\Delta}}
+\newunicodechar{−}{\textminus}
+\newunicodechar{≤}{\ensuremath{\leq}}
+\newunicodechar{√}{\ensuremath{\surd}}
+\newunicodechar{→}{\ensuremath{\rightarrow}}
+% δ met punt erboven (stuursnelheid): het bouwscript vervangt de combinatie
+% δ + U+0307 door dit ene teken, zodat het ook binnen \texttt klopt.
+\newunicodechar{}{\ensuremath{\dot{\delta}}}
+
+\usepackage{xcolor}
+\definecolor{inkblue}{HTML}{2F6FD8}
+\definecolor{inkorange}{HTML}{C4621F}
+\definecolor{inkgrey}{HTML}{5B6676}
+\definecolor{inkline}{HTML}{C8D0DA}
+\definecolor{boxbg}{HTML}{F4F6F9}
+
+\usepackage{titlesec}
+\titleformat{\section}{\sffamily\large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\sffamily\normalsize\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{1.6em plus .3em minus .2em}{0.5em}
+\titlespacing*{\subsection}{0pt}{1.1em plus .2em minus .1em}{0.35em}
+
+\usepackage{fancyhdr}
+\newcommand{\repourl}{https://github.com/chat-l18l/no_cutting_corners_with_AI}
+\newcommand{\repotext}{github.com/chat-l18l/no\_cutting\_corners\_with\_AI}
+\newcommand{\paperfoot}{%
+  \fancyhf{}%
+  \fancyfoot[L]{\footnotesize\sffamily\color{inkgrey}No Cutting Corners}%
+  \fancyfoot[C]{\footnotesize\sffamily\href{\repourl}{\repotext}}%
+  \fancyfoot[R]{\footnotesize\sffamily\color{inkgrey}\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0.4pt}}
+\pagestyle{fancy}\paperfoot
+\fancypagestyle{plain}{\paperfoot}   % ook op de titelpagina
+
+% ── kader met repository-verwijzing en QR-code, onder de titel ─────────────
+\usepackage{graphicx}
+\newcommand{\repobox}{%
+  \begin{center}%
+  \setlength{\fboxsep}{11pt}%
+  \fcolorbox{inkline}{boxbg}{%
+    \begin{minipage}{0.88\linewidth}%
+      \begin{minipage}[c]{0.70\linewidth}%
+        {\sffamily\bfseries\color{inkorange}Repository}\\[4pt]
+        {\small Everything in this report --- the C planner, its host tests,
+         the plan documents, the GUI and the scripts that produced these
+         figures --- is public, for colleagues and students to read, fork and
+         use.}\\[8pt]
+        {\sffamily\small\href{\repourl}{\repotext}}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.24\linewidth}%
+        \includegraphics[width=\linewidth]{img/qr_repo.png}
+      \end{minipage}%
+    \end{minipage}}%
+  \end{center}\par\medskip}
+
+% ── brede figuur op een liggende pagina ────────────────────────────────────
+% lscape verwisselt \textwidth en \textheight binnen de omgeving, dus
+% \linewidth is hier al de volle breedte van de gedraaide pagina (~25 cm).
+% Het onderschrift staat smaller: een regel van 25 cm leest niet.
+\usepackage{pdflscape}
+\newcommand{\widefigopen}[1]{%
+  \begin{landscape}%
+  \vspace*{\fill}%
+  \begin{center}\includegraphics[width=\linewidth]{#1}\end{center}%
+  \par\medskip
+  \begin{center}\begin{minipage}{0.86\linewidth}\small}
+\newcommand{\widefigclose}{%
+  \end{minipage}\end{center}\par\vspace*{\fill}\end{landscape}}
+
+% Onderschriften zijn gewone alinea's (geen floats): figuur en tekst blijven
+% dus staan waar ze in de bron staan, wat voor een rapport prettiger leest.
+\setlength{\emergencystretch}{3em}

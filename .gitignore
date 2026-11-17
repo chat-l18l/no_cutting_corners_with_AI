@@ -1,0 +1,21 @@
+# builddirs
+build/
+build-native/
+build-*/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# tussenbestanden van de PDF-bouw (tools/paper/build_pdf.py ruimt ze op,
+# maar niet als pandoc halverwege struikelt)
+docs/.paper_pdf_input.md
+docs/.paper_graphicspath.tex
+
+# ImGui schrijft de vensterindeling naast de toepassing weg
+*.ini
+
+# redactiegerei
+.vscode/
+*.swp
